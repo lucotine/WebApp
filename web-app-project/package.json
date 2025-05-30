@@ -1,0 +1,27 @@
+{
+  "name": "web-app-project",
+  "version": "1.0.0",
+  "description": "A web application project with a welcome page, navigation, and future features.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "keywords": [
+    "web",
+    "application",
+    "react"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "react-scripts": "4.0.3"
+  }
+}

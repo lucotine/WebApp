@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease-in-out infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+#app {
+    background: rgba(255,255,255,0.85);
+    padding: 48px 32px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(44,62,80,0.15);
+    text-align: center;
+    margin-top: 10vh;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    background: #333;
+    border-radius: 4px;
+    margin-bottom: 24px;
+}
+
+nav ul li {
+    margin: 0 16px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 20px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background: #555;
+    border-radius: 4px;
+}
+
+#welcome-container {
+    background: rgba(255,255,255,0.85);
+    padding: 48px 32px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(44,62,80,0.15);
+    text-align: center;
+    margin-top: 10vh;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#welcome-container h1 {
+    margin-bottom: 32px;
+    font-size: 2.5em;
+    color: #333;
+    opacity: 0;
+    animation: fadeIn 1s 0.3s forwards;
+}
+
+#start-button {
+    padding: 16px 48px;
+    font-size: 1.2em;
+    background: linear-gradient(90deg, #0078d7 0%, #00c6fb 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 16px;
+    opacity: 0;
+    animation: fadeIn 1.2s 0.8s forwards, floatBtn 2.5s 2s infinite ease-in-out;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes floatBtn {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-10px);}
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #888;
+    font-size: 1em;
+    background: none;
+    box-shadow: none;
+}
+
