@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav id="navbar" style="display: none;">
+    <ul>
+      <li><a href="#" id="nav-home">Home</a></li>
+      <li><a href="#" id="nav-about">About</a></li>
+      <li><a href="#" id="nav-settings">Settings</a></li>
+    </ul>
+  </nav>
+
+  <div id="welcome-screen">
+    <div class="gameboy-boot">
+      <div class="gameboy-body">
+        <div class="gameboy-screen">
+          <span class="boot-dot"></span>
+        </div>
+        <div class="gameboy-btn-a"></div>
+        <div class="gameboy-btn-b"></div>
+        <div class="gameboy-dpad"></div>
+      </div>
+    </div>
+    <h1 class="boot-title" style="opacity:0;">GameBox</h1>
+    <button id="enter-button" class="boot-btn" style="opacity:0;">Press Start</button>
+  </div>
+
+  <div id="home-menu" style="display: none;">
+    <h2>Game Catalogue</h2>
+    <div class="game-catalogue">
+      <div class="game-card">
+        <img src="https://upload.wikimedia.org/wikipedia/en/5/5e/Pac-Man.png" alt="Pac-Man" />
+        <h3>Pac-Man</h3>
+        <p>Classic arcade maze game. Eat all the dots and avoid the ghosts!</p>
+        <button>Play</button>
+      </div>
+      <div class="game-card">
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/03/Tetris_NES_cover_art.jpg" alt="Tetris" />
+        <h3>Tetris</h3>
+        <p>Arrange falling blocks to clear lines and score points.</p>
+        <button>Play</button>
+      </div>
+      <div class="game-card">
+        <img src="https://upload.wikimedia.org/wikipedia/en/2/2c/Snake_game.png" alt="Snake" />
+        <h3>Snake</h3>
+        <p>Grow your snake by eating food, but don’t run into yourself!</p>
+        <button>Play</button>
+      </div>
+      <!-- Add more game cards here -->
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about-section" style="display: none;">
+    <h2>About</h2>
+    <p>This is a simple web app template. You can expand it with more features!</p>
+  </section>
+
+  <!-- Settings Modal -->
+  <div id="settings-modal" style="display: none;">
+    <div class="modal-content">
+      <span id="close-settings" style="cursor:pointer;">&times;</span>
+      <h2>Settings</h2>
+      <label>
+        <input type="checkbox" id="dark-mode-toggle" />
+        Dark Mode
+      </label>
+    </div>
+  </div>
+
+  <!-- Game Container -->
+  <div id="game-container" style="display:none;">
+    <button id="back-to-menu" style="margin-bottom:16px;">&#8592; Back to Menu</button>
+    <div id="game-area"></div>
+  </div>
+
+  <!-- Snake Menu -->
+  <div id="snake-menu" style="display:none;">
+    <h2>Snake</h2>
+    <button id="snake-play-btn">Play</button>
+    <div id="snake-highscore">High Score: <span id="snake-highscore-value">0</span></div>
+  </div>
+  <div id="snake-game-wrapper" style="display:none;">
+    <canvas id="snake-canvas" width="480" height="480"></canvas>
+    <div id="snake-score" style="font-size:1.2em;margin:12px 0;">Score: 0</div>
+    <button id="restart-snake-btn" style="display:none;">Restart</button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 My Web App</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
