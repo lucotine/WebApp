@@ -353,7 +353,7 @@ footer {
 /* ====== DARK MODE ====== */
 body.dark-mode {
   background:
-    linear-gradient(135deg, #232946 0%, #181818 100%),
+    linear-gradient(135deg, #303656 0%, #000000 100%),
     url('https://www.transparenttextures.com/patterns/cubes.png');
   background-blend-mode: multiply;
   color: #655d5d !important;
