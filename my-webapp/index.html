@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome</title>
+  <title>GameBox</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="games/snake/snake.css">
+  <link rel="stylesheet" href="games/tetris/tetris.css">
+  <link rel="stylesheet" href="games/alien-invader/alien.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,6 +20,7 @@
     </ul>
   </nav>
 
+  <!-- Welcome Screen -->
   <div id="welcome-screen">
     <div class="gameboy-boot">
       <div class="gameboy-body">
@@ -32,6 +36,7 @@
     <button id="enter-button" class="boot-btn" style="opacity:0;">Press Start</button>
   </div>
 
+  <!-- Home Menu -->
   <div id="home-menu" style="display: none;">
     <h2>Game Catalogue</h2>
     <div class="game-catalogue">
@@ -56,9 +61,23 @@
     </div>
   </div>
 
+  <!-- Game Container -->
   <div id="game-container" style="display:none;">
     <button id="back-to-menu" style="margin-bottom:16px;">&#8592; Back to Menu</button>
     <div id="game-area"></div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div id="settings-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close-modal" id="close-settings">&times;</span>
+      <h2>Settings</h2>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-toggle">
+        <span class="slider"></span>
+      </label>
+      <span style="margin-left:12px;vertical-align:middle;">Enable Dark Mode</span>
+    </div>
   </div>
 
   <footer>
@@ -66,7 +85,8 @@
   </footer>
 
   <script src="script.js"></script>
-  <script src="snake.js"></script>
-  <script src="tetris.js"></script>
+  <script src="games/snake/snake.js"></script>
+  <script src="games/tetris/tetris.js"></script>
+  <script src="games/alien-invader/alien.js"></script>
 </body>
 </html>

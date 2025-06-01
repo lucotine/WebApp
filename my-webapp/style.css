@@ -1,4 +1,4 @@
-/* Reset and base styles */
+/* ====== RESET & BASE ====== */
 * {
   margin: 0;
   padding: 0;
@@ -7,18 +7,17 @@
 
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  /* Add a dynamic gradient background with a subtle pattern overlay */
-  background: 
+  background:
     linear-gradient(135deg, #e0e7ff 0%, #f4f4f4 100%),
     url('https://www.transparenttextures.com/patterns/cubes.png');
+  background-blend-mode: multiply;
   color: #222;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-blend-mode: multiply;
 }
 
-/* Navigation Bar */
+/* ====== NAVIGATION ====== */
 nav {
   background: #222;
   color: #fff;
@@ -26,13 +25,11 @@ nav {
   display: flex;
   justify-content: center;
 }
-
 nav ul {
   display: flex;
   gap: 32px;
   list-style: none;
 }
-
 nav ul li a {
   color: #fff;
   text-decoration: none;
@@ -40,24 +37,21 @@ nav ul li a {
   font-size: 1.1em;
   transition: color 0.2s;
 }
-
 nav ul li a:hover {
   color: #0078d7;
 }
 
-/* Welcome Screen */
+/* ====== WELCOME SCREEN ====== */
 #welcome-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 80px;
 }
-
 #welcome-screen h1 {
   margin-bottom: 24px;
   font-size: 2.2em;
 }
-
 #enter-button {
   padding: 12px 32px;
   font-size: 1.1em;
@@ -68,12 +62,11 @@ nav ul li a:hover {
   cursor: pointer;
   transition: background 0.2s;
 }
-
 #enter-button:hover {
   background: #005fa3;
 }
 
-/* Game Catalogue */
+/* ====== GAME CATALOGUE ====== */
 #home-menu {
   margin: 40px auto;
   max-width: 1100px;
@@ -83,24 +76,21 @@ nav ul li a:hover {
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   padding: 32px 24px;
 }
-
 #home-menu h2 {
   margin-bottom: 28px;
   text-align: center;
   font-size: 2em;
   letter-spacing: 1px;
 }
-
 .game-catalogue {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 28px;
   justify-items: center;
 }
-
 .game-card {
   position: relative;
-  background: 
+  background:
     linear-gradient(180deg, #bdbdbd 0%, #e0e0e0 60%, #a0a0a0 100%),
     url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
   background-blend-mode: multiply;
@@ -113,11 +103,9 @@ nav ul li a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   margin-bottom: 10px;
   transition: transform 0.18s, box-shadow 0.18s;
 }
-
 .game-card::before {
   content: '';
   display: block;
@@ -128,7 +116,6 @@ nav ul li a:hover {
   border-radius: 14px 14px 0 0;
   border-bottom: 2px solid #aaa;
 }
-
 .game-card img {
   width: 70px;
   height: 70px;
@@ -137,7 +124,6 @@ nav ul li a:hover {
   margin-bottom: 10px;
   z-index: 1;
 }
-
 .game-card h3 {
   margin-bottom: 6px;
   font-size: 1.05em;
@@ -146,7 +132,6 @@ nav ul li a:hover {
   color: #333;
   z-index: 1;
 }
-
 .game-card p {
   font-size: 0.93em;
   margin-bottom: 12px;
@@ -154,7 +139,6 @@ nav ul li a:hover {
   color: #444;
   z-index: 1;
 }
-
 .game-card button {
   background: #444;
   color: #fff;
@@ -168,22 +152,105 @@ nav ul li a:hover {
   transition: background 0.2s;
   z-index: 1;
 }
-
 .game-card button:hover {
   background: #0078d7;
 }
-
-/* Make card and section backgrounds slightly transparent for depth */
-#home-menu,
-#about-section,
-.modal-content {
-  background: rgba(255, 255, 255, 0.92);
-  /* Optional: add a soft border or shadow for separation */
-  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-  border: 1px solid #e0e0e0;
+.game-card:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  filter: brightness(1.07);
 }
 
-/* About Section */
+/* ====== GAME AREA & CONTAINERS ====== */
+#game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+#game-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#game-area canvas {
+  display: block;
+  margin: 0 auto;
+  border: 4px solid #888;
+  border-radius: 12px;
+  background: #222;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+
+/* ====== MODALS & SETTINGS ====== */
+#settings-modal, .modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 32px 36px 28px 36px;
+  min-width: 320px;
+  text-align: center;
+  position: relative;
+}
+.close-modal, #close-settings {
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  font-size: 2em;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.close-modal:hover, #close-settings:hover {
+  color: #ff3860;
+}
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+  vertical-align: middle;
+}
+.switch input { display: none; }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #ccc;
+  border-radius: 26px;
+  transition: .3s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px; width: 20px;
+  left: 3px; bottom: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: .3s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+input:checked + .slider {
+  background: #232946;
+}
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* ====== ABOUT SECTION ====== */
 #about-section {
   margin: 40px auto;
   max-width: 500px;
@@ -193,57 +260,12 @@ nav ul li a:hover {
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   padding: 28px 22px;
 }
-
 #about-section h2 {
   margin-bottom: 14px;
   font-size: 1.5em;
 }
 
-/* Settings Modal */
-#settings-modal {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background: #fff;
-  padding: 32px 28px 24px 28px;
-  border-radius: 12px;
-  min-width: 320px;
-  position: relative;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-}
-
-#close-settings {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  font-size: 1.6em;
-  color: #888;
-  cursor: pointer;
-}
-
-#close-settings:hover {
-  color: #0078d7;
-}
-
-/* Footer */
-footer {
-  margin-top: auto;
-  background: #222;
-  color: #fff;
-  text-align: center;
-  padding: 18px 0;
-  font-size: 1em;
-  letter-spacing: 1px;
-}
-
-/* Game Boy Boot Animation */
+/* ====== GAME BOY BOOT ANIMATION ====== */
 .gameboy-boot {
   display: flex;
   justify-content: center;
@@ -251,7 +273,6 @@ footer {
   margin-bottom: 32px;
   min-height: 180px;
 }
-
 .gameboy-body {
   width: 110px;
   height: 160px;
@@ -264,7 +285,6 @@ footer {
   flex-direction: column;
   align-items: center;
 }
-
 .gameboy-screen {
   width: 70px;
   height: 50px;
@@ -278,7 +298,6 @@ footer {
   align-items: center;
   justify-content: center;
 }
-
 .boot-dot {
   width: 12px;
   height: 12px;
@@ -287,13 +306,11 @@ footer {
   opacity: 0;
   animation: boot-dot-on 1.2s 0.5s forwards;
 }
-
 @keyframes boot-dot-on {
   0% { opacity: 0; }
   60% { opacity: 1; }
   100% { opacity: 0; }
 }
-
 .gameboy-btn-a, .gameboy-btn-b {
   position: absolute;
   bottom: 32px;
@@ -305,7 +322,6 @@ footer {
 }
 .gameboy-btn-a { left: 70px; }
 .gameboy-btn-b { left: 90px; }
-
 .gameboy-dpad {
   position: absolute;
   left: 20px;
@@ -316,50 +332,51 @@ footer {
   border-radius: 4px;
   box-shadow: 8px 0 #444, 0 8px #444;
 }
-
 .boot-title, .boot-btn {
   transition: opacity 0.6s;
 }
-
-/* Animation to fade in title and button after boot */
 @keyframes boot-fade-in {
   to { opacity: 1; }
 }
 
-/* Dark mode styles */
+/* ====== FOOTER ====== */
+footer {
+  margin-top: auto;
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 18px 0;
+  font-size: 1em;
+  letter-spacing: 1px;
+}
+
+/* ====== DARK MODE ====== */
 body.dark-mode {
-  background: 
+  background:
     linear-gradient(135deg, #232946 0%, #181818 100%),
     url('https://www.transparenttextures.com/patterns/cubes.png');
-  color: #eee;
-}
-
-body.dark-mode nav {
-  background: #181818;
-}
-
-body.dark-mode #home-menu,
-body.dark-mode #about-section,
-body.dark-mode .modal-content {
-  background: rgba(35, 35, 35, 0.93);
-  border: 1px solid #333;
-}
-
-body.dark-mode .game-card {
-  background: 
-    linear-gradient(180deg, #444 0%, #666 60%, #222 100%),
-    url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
   background-blend-mode: multiply;
+  color: #655d5d !important;
+}
+body.dark-mode nav,
+body.dark-mode footer {
+  background: #181818 !important;
+  color: #eee !important;
+}
+body.dark-mode .game-card,
+body.dark-mode #game-container,
+body.dark-mode #snake-menu,
+body.dark-mode #tetris-menu {
+  background: #181818 !important;
+  color: #eee !important;
+  border-color: #333 !important;
+}
+body.dark-mode .gameboy-body {
+  background: linear-gradient(180deg, #444 0%, #222 80%, #111 100%) !important;
+  border-color: #222 !important;
 }
 
-/* Optional: add a hover effect to cards for more dynamics */
-.game-card:hover {
-  transform: translateY(-6px) scale(1.04);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-  filter: brightness(1.07);
-}
-
-/* Responsive: 2 columns on tablets, 1 on mobile */
+/* ====== RESPONSIVE ====== */
 @media (max-width: 1100px) {
   .game-catalogue {
     grid-template-columns: repeat(2, 1fr);
@@ -372,87 +389,4 @@ body.dark-mode .game-card {
   #home-menu, #about-section {
     padding: 16px 4px;
   }
-}
-
-#game-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 70vh;
-}
-
-#game-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#game-area canvas {
-  display: block;
-  margin: 0 auto;
-  border: 4px solid #888;
-  border-radius: 12px;
-  background: #222;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-}
-
-#tetris-canvas {
-  width: 100%;
-  max-width: 240px;
-  height: auto;
-  aspect-ratio: 3 / 5;
-  display: block;
-  margin: 0 auto;
-  background: #222;
-  border-radius: 8px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-}
-
-/* Snake Menu Styles */
-#snake-menu {
-  background: rgba(255,255,255,0.98);
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-  padding: 32px 24px 24px 24px;
-  max-width: 340px;
-  margin: 40px auto 0 auto;
-  text-align: center;
-  border: 2px solid #baffc9;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#snake-menu h2 {
-  font-family: 'Press Start 2P', monospace, Arial, sans-serif;
-  font-size: 1.5em;
-  color: #232946;
-  margin-bottom: 18px;
-  letter-spacing: 2px;
-}
-
-#snake-menu button {
-  background: #baffc9;
-  color: #232946;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 36px;
-  font-size: 1.1em;
-  font-family: 'Press Start 2P', monospace, Arial, sans-serif;
-  margin-top: 12px;
-  cursor: pointer;
-  transition: background 0.2s;
-  box-shadow: 0 2px 0 #7fffd4 inset;
-}
-
-#snake-menu button:hover {
-  background: #7fffd4;
-}
-
-#snake-highscore {
-  margin-top: 18px;
-  font-size: 1.1em;
-  color: #0078d7;
-  font-family: 'Segoe UI', Arial, sans-serif;
 }
