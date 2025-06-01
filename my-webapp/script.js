@@ -25,16 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Play button for games
   document.querySelectorAll('.game-card button').forEach((btn, idx) => {
-    btn.addEventListener('click', () => {
-      if (idx === 2) { // Snake
-        homeMenu.style.display = 'none';
-        gameContainer.style.display = 'flex';
-        startSnakeGame();
-      } else {
-        alert('This game is not implemented yet!');
-      }
-    });
+  btn.addEventListener('click', () => {
+    homeMenu.style.display = 'none';
+    gameContainer.style.display = 'flex';
+    if (idx === 1) {
+      startTetrisGame();
+    } else if (idx === 2) {
+      startSnakeGame();
+    } else {
+      alert('This game is not implemented yet!');
+    }
   });
+});
 
   // Back to menu button
   backBtn.addEventListener('click', () => {
