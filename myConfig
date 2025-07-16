@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script type="text/javascript" async="" src="https://cdn.appdynamics.com/adrum-ext.8ad16b8375327e66a32816a8ad7be617.js"></script><script>
+        window['environment'] = 'p';
+        window['domain'] = 'intranet';
+        window['version'] = '20256211';
+    </script>
+    <script charset="UTF-8" type="text/javascript">
+            window['environment'] = 'p';
+                window["adrum-start-time"] = new Date().getTime();
+                 (function(config){
+                    config.appKey = Configuration["AppDynamicsKey"];
+                    config.adrumExtUrlHttp = "http://cdn.appdynamics.com";
+                    config.adrumExtUrlHttps = "https://cdn.appdynamics.com";
+                    config.beaconUrlHttp = "http://fra-col.eum-appdynamics.com";
+                    config.beaconUrlHttps = "https://fra-col.eum-appdynamics.com";
+                    config.useHTTPSAlways = true;
+                    config.resTiming = {"bufSize":200,"clearResTimingOnBeaconSend":true};
+                    config.maxUrlLength = 512;
+                })(window["adrum-config"] || (window["adrum-config"] = { }));
+    </script>
+    <script src="//cdn.appdynamics.com/adrum/adrum-24.4.0.4454.js"></script>
+
+    
+    <title>CommunicationPanel</title>
+    <base href="/virmcommunicationpanel/">
+    <link href="/virmcommunicationpanel/favicon.ico" rel="shortcut icon">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/virmcommunicationpanel/styles.4219bb19c9786dde.css">
+<style type="text/css"></style>
+
+
+<style>
+    .app-layout[_ngcontent-ng-c750109662] {
+        display: grid;
+        grid-template-columns: 70px auto;
+        grid-template-rows: 45px min-content min-content min-content auto;
+        height: 100%;
+        margin: 0
+    }
+
+    ag-side-bar[_ngcontent-ng-c750109662] {
+        grid-column: 1;
+        grid-row: 1 / span 5;
+        width: 70px;
+        height: 100%
+    }
+
+    ag-top-bar[_ngcontent-ng-c750109662] {
+        grid-column: 2;
+        grid-row: 1;
+        width: 100%;
+        height: 45px
+    }
+
+    ag-alert[_ngcontent-ng-c750109662] {
+        grid-column: 2;
+        grid-row: 2;
+        max-height: 45px
+    }
+
+    app-not-responding-pop-up-component[_ngcontent-ng-c750109662] {
+        grid-column: 2;
+        grid-row: 3;
+        width: 100%
+    }
+
+    ag-manage-acw[_ngcontent-ng-c750109662] {
+        grid-column: 2;
+        grid-row: 4;
+        width: 100%;
+        height: 45px
+    }
+
+    .main[_ngcontent-ng-c750109662] {
+        grid-column: 2;
+        grid-row: 5;
+        width: 100%;
+        height: 100%;
+        padding: 10px
+    }
+
+    .isAuthorized[_ngcontent-ng-c750109662] {
+        height: 100%
+    }
+
+    @media only screen and (max-width: 160px) {
+        ag-side-bar[_ngcontent-ng-c750109662] {
+            width: auto;
+            height: 100%
+        }
+
+        .app-layout[_ngcontent-ng-c750109662] {
+            grid-template-columns: 100% auto;
+            overflow-x: hidden
+        }
+
+        .mini-view[_ngcontent-ng-c750109662] {
+            visibility: hidden;
+            width: 0%;
+            overflow-y: hidden
+        }
+    }
+
+    .loading-screen[_ngcontent-ng-c750109662] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: fixed;
+        background-color: #fff;
+        height: 100%;
+        width: 100%;
+        z-index: 2
+    }
+</style>
+<style>
+    .sidebar[_ngcontent-ng-c1192258704] {
+        height: 100%;
+        width: 70px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #272440;
+        overflow-x: hidden;
+        padding-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between
+    }
+
+    .user-picture[_ngcontent-ng-c1192258704] {
+        width: 70px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px
+    }
+
+    img[_ngcontent-ng-c1192258704] {
+        height: 52px;
+        width: 52px;
+        border-radius: 50%
+    }
+
+    .presence[_ngcontent-ng-c1192258704] {
+        font-family: Verdana, Tahoma, sans-serif;
+        letter-spacing: .3px;
+        font-size: 12px;
+        font-weight: 400;
+        color: #dadbe0;
+        white-space: nowrap
+    }
+
+    .inACall[_ngcontent-ng-c1192258704] {
+        width: 100%;
+        background-color: #592344;
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+
+    .item[_ngcontent-ng-c1192258704] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #dadbe0;
+        width: 100%
+    }
+
+    .mini-view-button[_ngcontent-ng-c1192258704] {
+        padding-top: 10%
+    }
+
+    @media only screen and (max-width: 160px) {
+        .sidebar[_ngcontent-ng-c1192258704] {
+            width: auto;
+            position: unset;
+            align-items: center;
+            overflow-y: hidden
+        }
+
+        ag-side-bar-item[_ngcontent-ng-c1192258704] {
+            width: 100%
+        }
+
+        img[_ngcontent-ng-c1192258704] {
+            height: 33px;
+            width: 33px;
+            border-radius: 50%
+        }
+
+        .user-picture[_ngcontent-ng-c1192258704] {
+            width: auto
+        }
+
+        .top-container[_ngcontent-ng-c1192258704] {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%
+        }
+    }
+
+    #label-presence[_ngcontent-ng-c1192258704] {
+        margin-bottom: 0
+    }
+
+    .pill[_ngcontent-ng-c1192258704] {
+        display: inline-block;
+        padding: 0 6px;
+        border-radius: 25px;
+        color: #fff;
+        font-size: 12px;
+        font-weight: bolder;
+        text-align: center;
+        background-color: #ffffff75;
+        margin-bottom: .5rem
+    }
+</style>
+<style>
+    .topbar[_ngcontent-ng-c1888292337] {
+        height: 45px;
+        padding: 10px 20px;
+        width: 100%;
+        background-color: #e8e9ed;
+        display: flex;
+        align-items: center;
+        justify-content: space-between
+    }
+
+    .select[_ngcontent-ng-c1888292337] {
+        display: flex;
+        align-items: center
+    }
+
+    .select-item[_ngcontent-ng-c1888292337] {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        min-width: 180px
+    }
+
+    .button[_ngcontent-ng-c1888292337] {
+        display: flex;
+        cursor: pointer
+    }
+
+    .name-or-number[_ngcontent-ng-c1888292337] {
+        color: #1f2426;
+        font-family: Roboto, Open Sans, sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        margin-right: 4px
+    }
+
+    .label[_ngcontent-ng-c1888292337] {
+        color: #1f2426;
+        font-family: Roboto, Open Sans, sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        margin-right: 10px
+    }
+
+    .switch-container[_ngcontent-ng-c1888292337] {
+        display: flex;
+        align-items: center
+    }
+
+    .switch-label[_ngcontent-ng-c1888292337] {
+        font-family: Roboto, Open Sans, sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        margin: 0 10px 0 0
+    }
+
+    a[_ngcontent-ng-c1888292337] {
+        color: #1f2426;
+        font-family: Roboto, Open Sans, sans-serif;
+        font-weight: 600;
+        display: flex;
+        align-items: center
+    }
+
+    mat-icon[_ngcontent-ng-c1888292337] {
+        font-size: 18px;
+        width: 18px;
+        height: 18px
+    }
+
+    .presence-list-component[_ngcontent-ng-c1888292337],
+    .queue-list-component[_ngcontent-ng-c1888292337] {
+        position: absolute;
+        z-index: 9999;
+        top: 38px;
+        animation: _ngcontent-ng-c1888292337_fadeIn .45s ease-in-out forwards
+    }
+
+    @keyframes _ngcontent-ng-c1888292337_fadeIn {
+        0% {
+            opacity: 0
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    @media only screen and (max-width: 688px) {
+        .select-item[_ngcontent-ng-c1888292337] {
+            margin-right: 0;
+            display: block
+        }
+
+        .topbar[_ngcontent-ng-c1888292337] {
+            padding: 10px 20px
+        }
+    }
+
+    @media only screen and (max-width: 700px) {
+        .queue-list-component[_ngcontent-ng-c1888292337] {
+            position: fixed;
+            z-index: 9999;
+            top: 45px;
+            left: 70px;
+            width: calc(100% - 70px)
+        }
+    }
+</style>
+<style>
+    .alert[_ngcontent-ng-c2474726030] {
+        background-color: #616f74;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        color: #dadbe0;
+        border-radius: 0%
+    }
+
+    .cross[_ngcontent-ng-c2474726030] {
+        color: #fff
+    }
+
+    p[_ngcontent-ng-c2474726030] {
+        margin-bottom: 0
+    }
+</style>
+<style>
+    .notRespondingPopUp[_ngcontent-ng-c1005481317] {
+        background-color: #616f74;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1%
+    }
+
+    .notRespondingButtons[_ngcontent-ng-c1005481317] {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        justify-content: flex-end
+    }
+
+    .notRespondingText[_ngcontent-ng-c1005481317] {
+        color: #fff;
+        min-width: min-content
+    }
+
+    .statusText[_ngcontent-ng-c1005481317] {
+        font-weight: 700
+    }
+
+    p[_ngcontent-ng-c1005481317] {
+        margin-bottom: 0
+    }
+
+    .stayOffQueue[_ngcontent-ng-c1005481317] {
+        background-color: #616f74;
+        color: #fff;
+        border: 2px solid #FFFFFF;
+        border-radius: 8px;
+        min-width: fit-content;
+        min-height: fit-content;
+        margin: 0 5px;
+        padding: 3px 8px;
+        display: flex;
+        align-items: center
+    }
+
+    .stayOffQueue[_ngcontent-ng-c1005481317]:hover {
+        background-color: #ececec;
+        border: 2px solid #ececec;
+        color: #616f74
+    }
+
+    .backToQueue[_ngcontent-ng-c1005481317] {
+        background-color: #fff;
+        color: #616f74;
+        border: 2px solid #ffffff;
+        border-radius: 8px;
+        min-width: fit-content;
+        min-height: fit-content;
+        margin: 0 5px;
+        padding: 3px 8px;
+        display: flex;
+        align-items: center
+    }
+
+    .backToQueue[_ngcontent-ng-c1005481317]:hover {
+        background-color: #4d595e;
+        border: 2px solid #4d595e;
+        color: #fff
+    }
+
+    @media only screen and (max-width: 760px) {
+        .notRespondingText[_ngcontent-ng-c1005481317] {
+            width: 50%
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        .notRespondingText[_ngcontent-ng-c1005481317] {
+            width: 50%
+        }
+
+        .notRespondingButtons[_ngcontent-ng-c1005481317] {
+            justify-content: flex-start
+        }
+    }
+</style>
+<style>
+    a.item[_ngcontent-ng-c2118999916] {
+        height: 60px;
+        width: 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 3px;
+        text-decoration: none
+    }
+
+    a.item[_ngcontent-ng-c2118999916] span[_ngcontent-ng-c2118999916],
+    mat-icon[_ngcontent-ng-c2118999916] {
+        color: #dadbe0
+    }
+
+    mat-icon[_ngcontent-ng-c2118999916] {
+        font-size: 32px;
+        height: 32px;
+        width: 32px
+    }
+
+    a.item[_ngcontent-ng-c2118999916] span[_ngcontent-ng-c2118999916] {
+        font-family: Verdana, Tahoma, sans-serif;
+        letter-spacing: .3px;
+        font-size: 12px;
+        font-weight: 400
+    }
+
+    a.item[_ngcontent-ng-c2118999916]:hover,
+    a.item.active-link[_ngcontent-ng-c2118999916] {
+        background-color: #dadbe0
+    }
+
+    a.item[_ngcontent-ng-c2118999916]:hover mat-icon[_ngcontent-ng-c2118999916],
+    a.item[_ngcontent-ng-c2118999916]:hover span[_ngcontent-ng-c2118999916],
+    a.item.active-link[_ngcontent-ng-c2118999916] mat-icon[_ngcontent-ng-c2118999916],
+    a.item.active-link[_ngcontent-ng-c2118999916] span[_ngcontent-ng-c2118999916] {
+        color: #272440
+    }
+
+    a.item.inACall[_ngcontent-ng-c2118999916]:hover,
+    a.item.active-link.inACall[_ngcontent-ng-c2118999916] {
+        background-color: unset
+    }
+
+    a.item.active-link.inACall[_ngcontent-ng-c2118999916] mat-icon[_ngcontent-ng-c2118999916],
+    a.item.inACall[_ngcontent-ng-c2118999916]:hover mat-icon[_ngcontent-ng-c2118999916],
+    a.item.inACall[_ngcontent-ng-c2118999916]:hover span[_ngcontent-ng-c2118999916],
+    a.item.active-link.inACall[_ngcontent-ng-c2118999916] span[_ngcontent-ng-c2118999916] {
+        color: #dadbe0
+    }
+
+    @media (min-height: 400px) {
+        a.item[_ngcontent-ng-c2118999916] {
+            margin-bottom: 9px
+        }
+    }
+
+    @media (min-height: 600px) {
+        a.item[_ngcontent-ng-c2118999916] {
+            margin-bottom: 18px
+        }
+    }
+
+    @media (min-height: 900px) {
+        a.item[_ngcontent-ng-c2118999916] {
+            margin-bottom: 27px
+        }
+    }
+
+    @media (min-height: 1200px) {
+        a.item[_ngcontent-ng-c2118999916] {
+            margin-bottom: 36px
+        }
+    }
+
+    @media only screen and (max-width: 160px) {
+        a.item[_ngcontent-ng-c2118999916] {
+            font-size: small;
+            width: 100%
+        }
+
+        a.item[_ngcontent-ng-c2118999916] span[_ngcontent-ng-c2118999916] {
+            font-size: 100%
+        }
+
+        mat-icon[_ngcontent-ng-c2118999916] {
+            font-size: 30px;
+            height: 32px;
+            width: 32px
+        }
+
+        a.item.active-link.notInACall[_ngcontent-ng-c2118999916] mat-icon[_ngcontent-ng-c2118999916],
+        a.item.notInACall[_ngcontent-ng-c2118999916]:hover mat-icon[_ngcontent-ng-c2118999916],
+        a.item.notInACall[_ngcontent-ng-c2118999916]:hover span[_ngcontent-ng-c2118999916],
+        a.item.active-link.notInACall[_ngcontent-ng-c2118999916] span[_ngcontent-ng-c2118999916] {
+            color: #dadbe0
+        }
+
+        a.item.notInACall[_ngcontent-ng-c2118999916]:hover mat-icon[_ngcontent-ng-c2118999916],
+        a.item.notInACall[_ngcontent-ng-c2118999916]:hover span[_ngcontent-ng-c2118999916],
+        a.item.active-link.notInACall[_ngcontent-ng-c2118999916] mat-icon[_ngcontent-ng-c2118999916],
+        a.item.active-link.notInACall[_ngcontent-ng-c2118999916] span[_ngcontent-ng-c2118999916] {
+            color: #272440
+        }
+    }
+</style>
+<style>
+    mat-icon,
+    mat-icon.mat-primary,
+    mat-icon.mat-accent,
+    mat-icon.mat-warn {
+        color: var(--mat-icon-color)
+    }
+
+    .mat-icon {
+        -webkit-user-select: none;
+        user-select: none;
+        background-repeat: no-repeat;
+        display: inline-block;
+        fill: currentColor;
+        height: 24px;
+        width: 24px;
+        overflow: hidden
+    }
+
+    .mat-icon.mat-icon-inline {
+        font-size: inherit;
+        height: inherit;
+        line-height: inherit;
+        width: inherit
+    }
+
+    .mat-icon.mat-ligature-font[fontIcon]::before {
+        content: attr(fontIcon)
+    }
+
+    [dir=rtl] .mat-icon-rtl-mirror {
+        transform: scale(-1, 1)
+    }
+
+    .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon,
+    .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon {
+        display: block
+    }
+
+    .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button .mat-icon,
+    .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button .mat-icon {
+        margin: auto
+    }
+</style>
+<style>
+    .toggle[_ngcontent-ng-c1256768602] {
+        width: 44px;
+        height: 24px;
+        position: relative
+    }
+
+    .toggle-input[_ngcontent-ng-c1256768602] {
+        display: none
+    }
+
+    .toggle-slider[_ngcontent-ng-c1256768602] {
+        position: absolute;
+        cursor: pointer;
+        inset: 0;
+        margin: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 34px
+    }
+
+    .toggle-slider[_ngcontent-ng-c1256768602]:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 2px;
+        bottom: 2px;
+        background-color: #fff;
+        transition: .4s;
+        border-radius: 50%
+    }
+
+    .toggle-input[_ngcontent-ng-c1256768602]:checked+.toggle-slider[_ngcontent-ng-c1256768602] {
+        background-color: #9c0
+    }
+
+    .toggle-input[_ngcontent-ng-c1256768602]:checked+.toggle-slider[_ngcontent-ng-c1256768602]:before {
+        transform: translate(20px)
+    }
+
+    .toggle-slider.disabled[_ngcontent-ng-c1256768602] {
+        opacity: .3;
+        background-color: #ccc;
+        cursor: default
+    }
+</style>
+<style>
+    .main-container[_ngcontent-ng-c874398887] {
+        display: flex;
+        justify-content: center;
+        height: 100%
+    }
+
+    .initial-dialpad-container[_ngcontent-ng-c874398887] {
+        display: flex;
+        width: 100%
+    }
+
+    .dialpad[_ngcontent-ng-c874398887] {
+        width: 100%
+    }
+
+    .call-container[_ngcontent-ng-c874398887] {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        flex-direction: column
+    }
+
+    .bg-darker[_ngcontent-ng-c874398887] {
+        background: #1f2426
+    }
+
+    .call-info-container[_ngcontent-ng-c874398887] {
+        flex: 1
+    }
+
+    .com-panel-container[_ngcontent-ng-c874398887] {
+        min-height: 300px
+    }
+
+    .secondary-dialpad-container[_ngcontent-ng-c874398887] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 20px
+    }
+
+    .hide-button[_ngcontent-ng-c874398887] {
+        align-self: flex-start;
+        background-color: transparent;
+        color: #fff;
+        font-weight: 600;
+        height: 32px;
+        width: 32px;
+        border: 2px solid #fff;
+        border-radius: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 6px
+    }
+
+    .hide-button[_ngcontent-ng-c874398887] mat-icon[_ngcontent-ng-c874398887] {
+        height: 18px;
+        width: 18px;
+        font-size: 18px
+    }
+
+    .app-call-info-container[_ngcontent-ng-c874398887] {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        flex-direction: column
+    }
+
+    .incomming-call-container[_ngcontent-ng-c874398887] {
+        min-height: 300px;
+        display: flex;
+        justify-content: center
+    }
+
+    .loader-container[_ngcontent-ng-c874398887] {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #1f2426
+    }
+
+    .modal-dialog .modal-content button.close {
+        display: none
+    }
+</style>
+<style>
+    .pop-up-main[_ngcontent-ng-c1260560212] {
+        display: flex;
+        flex-direction: column;
+        padding: 5
+    }
+
+    .pop-up-title[_ngcontent-ng-c1260560212] {
+        display: flex;
+        padding-bottom: 5%;
+        justify-content: flex-start
+    }
+
+    .pop-up-text[_ngcontent-ng-c1260560212] {
+        display: flex;
+        justify-content: center
+    }
+
+    .pop-up-loader-container[_ngcontent-ng-c1260560212] {
+        display: flex;
+        padding-bottom: 5%;
+        padding-top: 5%;
+        justify-content: center
+    }
+
+    .pop-up-button[_ngcontent-ng-c1260560212] {
+        display: flex;
+        padding-bottom: 5%;
+        justify-content: center;
+        text-align: center
+    }
+
+    .modal-dialog .modal-content button.close {
+        display: none
+    }
+</style>
+<style>
+    button[_ngcontent-ng-c421828242]:enabled:focus,
+    button[_ngcontent-ng-c421828242]:enabled:active:focus,
+    button[_ngcontent-ng-c421828242]:enabled.active:focus {
+        outline: thin dotted;
+        outline: 0px auto -webkit-focus-ring-color;
+        outline-offset: 0px
+    }
+
+    button.ag-disabled[_ngcontent-ng-c421828242],
+    button[disabled][_ngcontent-ng-c421828242],
+    button[_ngcontent-ng-c421828242]:disabled {
+        pointer-events: none;
+        cursor: not-allowed;
+        filter: alpha(opacity=50);
+        box-shadow: none;
+        opacity: .5
+    }
+
+    @keyframes _ngcontent-ng-c421828242_loading-spin {
+        0% {
+            transform: rotate(0)
+        }
+
+        to {
+            transform: rotate(359deg)
+        }
+    }
+
+    button[_ngcontent-ng-c421828242] {
+        font-family: GeogrotesqueSemiBold, Helvetica, Arial, Verdana, Tahoma, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 14px;
+        display: inline-flex;
+        align-items: center;
+        margin: 0;
+        border: 1px solid transparent;
+        padding: .6rem .75rem;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        height: auto;
+        min-height: 40px;
+        min-width: 90px;
+        border-radius: 3px;
+        white-space: normal;
+        text-align: center;
+        text-transform: uppercase;
+        position: relative;
+        overflow: hidden;
+        transition: background-color .2s, border-color .2s, color .2s, box-shadow .2s, background-size .2s cubic-bezier(.64, .09, .08, 1)
+    }
+
+    button[_ngcontent-ng-c421828242] .ag-button-label[_ngcontent-ng-c421828242] {
+        flex: 1 1 auto;
+        padding-top: 2px
+    }
+
+    button[_ngcontent-ng-c421828242] .ag-badge[_ngcontent-ng-c421828242] {
+        margin-left: .5rem;
+        min-width: 1rem;
+        height: 1rem;
+        line-height: 1rem;
+        color: #e8e9ed;
+        background-color: #fff;
+        text-transform: none;
+        padding: 0 .5rem;
+        border-radius: 10px;
+        font-size: 12px
+    }
+
+    button[_ngcontent-ng-c421828242] .ag-button-icon-right[_ngcontent-ng-c421828242] {
+        order: 1;
+        margin-left: .5rem
+    }
+
+    button[_ngcontent-ng-c421828242] .ag-button-icon-bottom[_ngcontent-ng-c421828242] {
+        order: 2;
+        margin-top: .5rem
+    }
+
+    button[_ngcontent-ng-c421828242] .ag-button-icon-bottom[_ngcontent-ng-c421828242]~.ag-badge[_ngcontent-ng-c421828242] {
+        margin-left: 0;
+        margin-top: .5rem
+    }
+
+    button[_ngcontent-ng-c421828242] .ag-button-icon-left[_ngcontent-ng-c421828242] {
+        margin-right: .5rem
+    }
+
+    button[_ngcontent-ng-c421828242] .ag-button-icon-top[_ngcontent-ng-c421828242] {
+        margin-bottom: .5rem
+    }
+
+    button[_ngcontent-ng-c421828242] .ag-button-icon-top[_ngcontent-ng-c421828242]~.ag-badge[_ngcontent-ng-c421828242] {
+        margin-left: 0;
+        margin-top: .5rem
+    }
+
+    button[_ngcontent-ng-c421828242]:enabled:hover {
+        color: #fff;
+        text-decoration: none
+    }
+
+    button[_ngcontent-ng-c421828242]:enabled:focus {
+        color: #fff;
+        text-decoration: none;
+        background-image: none;
+        outline: 0;
+        box-shadow: inset 0 1px 1px #0003
+    }
+
+    button[_ngcontent-ng-c421828242]:enabled.active,
+    button[_ngcontent-ng-c421828242]:enabled:active {
+        background-image: none;
+        outline: 0;
+        box-shadow: inset 0 1px 1px #0003
+    }
+
+    button.ag-disabled[_ngcontent-ng-c421828242],
+    button[disabled][_ngcontent-ng-c421828242],
+    button[_ngcontent-ng-c421828242]:disabled {
+        cursor: default
+    }
+
+    button.ag-button-icon-only[_ngcontent-ng-c421828242] {
+        justify-content: center;
+        min-width: 2.75rem;
+        width: 2.75rem;
+        padding: .6rem
+    }
+
+    button.ag-button-icon-only[_ngcontent-ng-c421828242] .ag-button-label[_ngcontent-ng-c421828242] {
+        visibility: hidden;
+        width: 0;
+        flex: 0 0 auto
+    }
+
+    button.ag-button-icon-only[_ngcontent-ng-c421828242] .ag-button-icon-left[_ngcontent-ng-c421828242],
+    button.ag-button-icon-only[_ngcontent-ng-c421828242] .ag-button-icon-right[_ngcontent-ng-c421828242] {
+        margin: 0
+    }
+
+    button.ag-button-icon-only.ag-button-rounded[_ngcontent-ng-c421828242] {
+        border-radius: 50%;
+        height: 2.75rem
+    }
+
+    button.ag-button-vertical[_ngcontent-ng-c421828242] {
+        flex-direction: column
+    }
+
+    button.ag-button-loading[_ngcontent-ng-c421828242] .ag-button-loading-icon[_ngcontent-ng-c421828242] {
+        animation: _ngcontent-ng-c421828242_loading-spin 1s infinite steps(8)
+    }
+
+    button.ag-button-loading-label-only[_ngcontent-ng-c421828242] .ag-button-label[_ngcontent-ng-c421828242] {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s linear .3s, opacity .3s
+    }
+
+    button.ag-button-loading-label-only[_ngcontent-ng-c421828242] .ag-button-loading-icon[_ngcontent-ng-c421828242] {
+        position: absolute;
+        top: calc(50% - 7px);
+        left: calc(50% - 7px);
+        transform: translate(-50%, -50%)
+    }
+
+    button.ag-button-outlined[_ngcontent-ng-c421828242] {
+        background-color: transparent;
+        color: #e8e9ed;
+        border: 1px solid
+    }
+
+    button.ag-button-outlined[_ngcontent-ng-c421828242]:enabled:hover {
+        background: #673ab70a;
+        color: #e8e9ed;
+        border: 1px solid
+    }
+
+    button.ag-button-outlined[_ngcontent-ng-c421828242]:enabled:focus {
+        box-shadow: none
+    }
+
+    button.ag-button-outlined[_ngcontent-ng-c421828242]:enabled.active,
+    button.ag-button-outlined[_ngcontent-ng-c421828242]:enabled:active {
+        background: #673ab729;
+        color: #e8e9ed;
+        border: 1px solid;
+        box-shadow: none
+    }
+
+    button.ag-button-text[_ngcontent-ng-c421828242] {
+        background-color: transparent;
+        color: #e8e9ed;
+        border-color: transparent
+    }
+
+    button.ag-button-text[_ngcontent-ng-c421828242]:enabled:hover {
+        background: #673ab70a;
+        color: #e8e9ed;
+        border-color: transparent
+    }
+
+    button.ag-button-text[_ngcontent-ng-c421828242]:enabled:focus {
+        box-shadow: none
+    }
+
+    button.ag-button-text[_ngcontent-ng-c421828242]:enabled.active,
+    button.ag-button-text[_ngcontent-ng-c421828242]:enabled:active {
+        background: #673ab729;
+        color: #e8e9ed;
+        border-color: transparent;
+        box-shadow: none
+    }
+
+    button.ag-button-raised[_ngcontent-ng-c421828242] {
+        box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f
+    }
+
+    button.ag-button-raised[_ngcontent-ng-c421828242]:enabled:focus {
+        box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f
+    }
+
+    button.ag-button-raised[_ngcontent-ng-c421828242]:enabled.active,
+    button.ag-button-raised[_ngcontent-ng-c421828242]:enabled:active {
+        box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f
+    }
+
+    button.ag-button-rounded[_ngcontent-ng-c421828242] {
+        border-radius: 2rem
+    }
+
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button[_ngcontent-ng-c421828242] {
+        color: #fff;
+        border-color: #9c0;
+        background-color: #9c0
+    }
+
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button[_ngcontent-ng-c421828242]:enabled:hover,
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button[_ngcontent-ng-c421828242]:enabled:focus {
+        color: #fff;
+        border-color: #7caa00;
+        background-color: #7caa00
+    }
+
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button[_ngcontent-ng-c421828242]:enabled:active,
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button[_ngcontent-ng-c421828242]:enabled.active {
+        background-image: none;
+        color: #fff;
+        border-color: #9c0;
+        background-color: #9c0
+    }
+
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button[_ngcontent-ng-c421828242]:enabled:active:enabled:hover,
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button[_ngcontent-ng-c421828242]:enabled:active:enabled:focus,
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button[_ngcontent-ng-c421828242]:enabled.active:enabled:hover,
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button[_ngcontent-ng-c421828242]:enabled.active:enabled:focus {
+        color: #fff;
+        border-color: #7caa00;
+        background-color: #7caa00
+    }
+
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button[_ngcontent-ng-c421828242] .ag-badge[_ngcontent-ng-c421828242] {
+        color: #9c0;
+        background-color: #fff
+    }
+
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-outlined[_ngcontent-ng-c421828242] {
+        color: #9c0;
+        border-color: #9c0;
+        background-color: transparent
+    }
+
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-outlined[_ngcontent-ng-c421828242]:enabled:hover,
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-outlined[_ngcontent-ng-c421828242]:enabled:focus {
+        color: #7caa00;
+        border-color: #7caa00;
+        background-color: #99cc000a
+    }
+
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-outlined[_ngcontent-ng-c421828242]:enabled:active,
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-outlined[_ngcontent-ng-c421828242]:enabled.active {
+        color: #9c0;
+        border-color: #9c0;
+        background-color: transparent
+    }
+
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-outlined[_ngcontent-ng-c421828242]:enabled:active:enabled:hover,
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-outlined[_ngcontent-ng-c421828242]:enabled:active:enabled:focus,
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-outlined[_ngcontent-ng-c421828242]:enabled.active:enabled:hover,
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-outlined[_ngcontent-ng-c421828242]:enabled.active:enabled:focus {
+        color: #7caa00;
+        border-color: #7caa00;
+        background-color: #99cc000a
+    }
+
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-text[_ngcontent-ng-c421828242] {
+        background-color: transparent;
+        color: #9c0;
+        border-color: transparent
+    }
+
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-text[_ngcontent-ng-c421828242]:enabled:hover {
+        background: #673ab70a;
+        color: #9c0;
+        border-color: transparent
+    }
+
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-text[_ngcontent-ng-c421828242]:enabled:focus {
+        box-shadow: none
+    }
+
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-text[_ngcontent-ng-c421828242]:enabled.active,
+    [data-color=primary][data-universe=default][_nghost-ng-c421828242] button.ag-button-text[_ngcontent-ng-c421828242]:enabled:active {
+        background: #673ab729;
+        color: #9c0;
+        border-color: transparent;
+        box-shadow: none
+    }
+
+    button[_ngcontent-ng-c421828242] {
+        position: relative;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 1rem;
+        height: 2.5rem;
+        min-width: 3rem;
+        border: none;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        background-color: #007bff;
+        transition: background-color 0.2s, transform 0.2s;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none
+    }
+
+    button[_ngcontent-ng-c421828242]:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px)
+    }
+
+    button[_ngcontent-ng-c421828242]:active {
+        background-color: #004085;
+        transform: translateY(0)
+    }
+
+    button[_ngcontent-ng-c421828242]:disabled {
+        background-color: #007bff;
+        opacity: 0.65;
+        cursor: not-allowed
+    }
+
+    @media (min-width: 768px) {
+        button[_ngcontent-ng-c421828242] {
+            padding: 0 1.5rem;
+            height: 3rem;
+            font-size: 1.125rem;
+            min-width: 4rem
+        }
+    }
+
+    @media (max-width: 767px) {
+        button[_ngcontent-ng-c421828242] {
+            width: 100%
+        }
+    }
+</style>
+<style>
+    /* Rainbow profile picture */
+.user-picture img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: 5px solid;
+    border-image: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red) 1;
+    box-shadow: 0 0 20px 5px rgba(255,0,200,0.3);
+    transition: transform 0.2s;
+}
+.user-picture img:hover {
+    transform: rotate(-10deg) scale(1.1);
+    box-shadow: 0 0 30px 10px rgba(255,0,200,0.5);
+}
+
+/* Funny rainbow body background */
+body {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #ffb347 0%, #ffcc33 20%, #b19cd9 40%, #77dd77 60%, #ff6961 80%, #fdfd96 100%);
+    animation: body-rainbow-move 10s linear infinite;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes body-rainbow-move {
+    0% { filter: hue-rotate(0deg);}
+    100% { filter: hue-rotate(360deg);}
+}
+
+/* Add a little wiggle to the whole page on hover */
+body:hover {
+    animation: wiggle 0.5s;
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(-2deg);}
+    25% { transform: rotate(2deg);}
+    50% { transform: rotate(-2deg);}
+    75% { transform: rotate(2deg);}
+    100% { transform: rotate(0deg);}
+}
+
+/* Funny sidebar */
+.sidebar {
+    background: linear-gradient(135deg, #ffb347 0%, #ffcc33 25%, #b19cd9 50%, #77dd77 75%, #ff6961 100%);
+    border-right: 4px dashed #fff;
+    box-shadow: 0 0 30px 5px #b19cd9;
+    animation: rainbow-move 5s linear infinite;
+}
+
+@keyframes rainbow-move {
+    0% { filter: hue-rotate(0deg);}
+    100% { filter: hue-rotate(360deg);}
+}
+
+/* Make labels pop */
+.presence, .pill {
+    font-family: Comic Sans MS, cursive, sans-serif;
+    font-size: 16px;
+    color: #fff;
+    background: linear-gradient(90deg, #ff6961, #77dd77, #fdfd96, #84b6f4, #fdcae1);
+    border-radius: 12px;
+    padding: 4px 12px;
+    box-shadow: 0 2px 8px #fff7;
+}
+
+/* Add a little bounce to sidebar items */
+.sidebar .item {
+    transition: transform 0.2s;
+}
+.sidebar .item:hover {
+    transform: scale(1.08) rotate(-5deg);
+    background: linear-gradient(90deg, #fff, #fdfd96, #b19cd9);
+}
+</style>
+<style>
+    .loader[_ngcontent-ng-c2458925272] {
+        border: 6px solid #dadbe0;
+        border-radius: 50%;
+        border-top: 6px solid #003366;
+        width: 48px;
+        height: 48px;
+        animation: _ngcontent-ng-c2458925272_spin 1s linear infinite
+    }
+
+    @keyframes _ngcontent-ng-c2458925272_spin {
+        0% {
+            transform: rotate(0)
+        }
+
+        to {
+            transform: rotate(360deg)
+        }
+    }
+</style>
+<style>
+    .button-container[_ngcontent-ng-c4237918716] {
+        display: grid;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-items: end
+    }
+
+    .screen-container[_ngcontent-ng-c4237918716] {
+        display: flex;
+        padding: 2px 20px 20px
+    }
+
+    .dialpad-screen[_ngcontent-ng-c4237918716] {
+        height: 40px;
+        width: 100%;
+        border: 1px solid #E8E9ED;
+        border-radius: 4px;
+        padding: 4px 8px;
+        font-size: 14px;
+        cursor: default;
+        display: flex;
+        align-items: center;
+        background-color: #e8e9ed;
+        color: #616f74
+    }
+
+    .dialpad-row[_ngcontent-ng-c4237918716] {
+        display: flex;
+        align-items: center
+    }
+
+    .behalf[_ngcontent-ng-c4237918716] {
+        display: flex;
+        flex-direction: column
+    }
+
+    .check-type[_ngcontent-ng-c4237918716] {
+        padding-left: 20px;
+        padding-right: 20px
+    }
+
+    .behalf-queue-selection[_ngcontent-ng-c4237918716] {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        align-items: center
+    }
+
+    .on-behalf-dropdown[_ngcontent-ng-c4237918716] {
+        flex: 1;
+        max-width: 300px
+    }
+
+    .info-message[_ngcontent-ng-c4237918716],
+    .error-message[_ngcontent-ng-c4237918716] {
+        margin-left: 10px;
+        margin-right: 10px
+    }
+
+    .error-message[_ngcontent-ng-c4237918716] {
+        color: red
+    }
+
+    [_nghost-ng-c4237918716] .form-group {
+        margin-bottom: 5px;
+        margin-top: 0
+    }
+
+    [_nghost-ng-c4237918716] .ag-select-host .form-group .ag-select {
+        margin-top: 0
+    }
+</style>
+<style>
+    .circle-button[_ngcontent-ng-c2631205996] {
+        border: none;
+        border-radius: 30px;
+        height: 60px;
+        width: 60px;
+        background-color: #e8e9ed;
+        padding: 10px;
+        margin: 8px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+
+    .circle-button[_ngcontent-ng-c2631205996]:hover {
+        background-color: #a1a9af
+    }
+
+    .circle-button[_ngcontent-ng-c2631205996]:focus-visible {
+        outline: none
+    }
+
+    .number[_ngcontent-ng-c2631205996] {
+        color: #3d3d3d;
+        font-size: 24px;
+        font-weight: 700
+    }
+
+    .symbol[_ngcontent-ng-c2631205996] {
+        font-size: 18px;
+        margin-top: -6px
+    }
+
+    h5[_ngcontent-ng-c2631205996] {
+        margin-bottom: 0
+    }
+
+    .icon[_ngcontent-ng-c2631205996] {
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+
+    .call-button[_ngcontent-ng-c2631205996] {
+        background-color: #9c0
+    }
+
+    .call-button[_ngcontent-ng-c2631205996]:hover {
+        background-color: #80aa00
+    }
+
+    .end-call-button[_ngcontent-ng-c2631205996] {
+        background-color: #cc2929
+    }
+
+    .end-call-button[_ngcontent-ng-c2631205996]:hover {
+        background-color: #9c2222
+    }
+
+    .call-icon[_ngcontent-ng-c2631205996],
+    .end-call-icon[_ngcontent-ng-c2631205996] {
+        color: #fff;
+        font-size: 38px;
+        height: 38px;
+        width: 38px
+    }
+
+    .backspace-icon[_ngcontent-ng-c2631205996] {
+        color: #a1a9af;
+        font-size: 38px;
+        height: 38px;
+        width: 38px
+    }
+
+    .backspace-icon[_ngcontent-ng-c2631205996]:hover {
+        color: #545454
+    }
+
+    .backspace-button[_ngcontent-ng-c2631205996]:hover {
+        background-color: unset;
+        color: #545454
+    }
+
+    .backspace-button[_ngcontent-ng-c2631205996] {
+        background-color: unset;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center
+    }
+</style>
+<style>
+    #behalf-container[_ngcontent-ng-c1003443283] {
+        display: flex;
+        flex-direction: row
+    }
+
+    .button-container[_ngcontent-ng-c1003443283] {
+        display: grid;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-items: end
+    }
+
+    .screen-container[_ngcontent-ng-c1003443283] {
+        display: flex;
+        padding: 2px 20px 20px
+    }
+
+    .dialpad-screen[_ngcontent-ng-c1003443283] {
+        height: 40px;
+        width: 100%;
+        border: 1px solid #E8E9ED;
+        border-radius: 4px;
+        padding: 4px 8px;
+        font-size: 14px;
+        cursor: default;
+        display: flex;
+        align-items: center;
+        background-color: #e8e9ed;
+        color: #616f74
+    }
+
+    .dialpad-row[_ngcontent-ng-c1003443283] {
+        display: flex;
+        align-items: center
+    }
+
+    .behalf[_ngcontent-ng-c1003443283] {
+        display: flex;
+        flex-direction: column
+    }
+
+    .check-type[_ngcontent-ng-c1003443283] {
+        padding-left: 20px;
+        padding-right: 20px
+    }
+
+    .behalf-queue-selection[_ngcontent-ng-c1003443283] {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        align-items: center
+    }
+
+    .on-behalf-dropdown[_ngcontent-ng-c1003443283] {
+        flex: 1;
+        max-width: 300px
+    }
+
+    .info-message[_ngcontent-ng-c1003443283],
+    .error-message[_ngcontent-ng-c1003443283] {
+        margin-left: 10px;
+        margin-right: 10px
+    }
+
+    .error-message[_ngcontent-ng-c1003443283] {
+        color: red
+    }
+
+    .warning-message[_ngcontent-ng-c1003443283] {
+        color: orange
+    }
+
+    [_nghost-ng-c1003443283] .form-group {
+        margin-bottom: 5px;
+        margin-top: 0
+    }
+
+    [_nghost-ng-c1003443283] .ag-select-host .form-group .ag-select {
+        margin-top: 0
+    }
+
+    .radio-container[_ngcontent-ng-c1003443283] {
+        display: flex
+    }
+</style>
+<style>
+    @keyframes loading-spin {
+        0% {
+            transform: rotate(0deg);
+            transform: rotate(0)
+        }
+
+        to {
+            transform: rotate(360deg);
+            transform: rotate(360deg)
+        }
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option .form-check>input[type=checkbox]:not(:only-child),
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-optgroup .form-check>input[type=checkbox]:not(:only-child) {
+        opacity: 0;
+        margin-left: 0;
+        position: absolute;
+        left: 0
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option .form-check>input[type=checkbox]~label:before,
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-optgroup .form-check>input[type=checkbox]~label:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 18px;
+        height: 18px;
+        border: solid 1px #dadbe0;
+        border-radius: 3px;
+        background-color: #fff;
+        top: 3px;
+        cursor: pointer
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option .form-check>input[type=checkbox]~label:hover:before,
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-optgroup .form-check>input[type=checkbox]~label:hover:before {
+        border-color: #a1a9af
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option .form-check>input[type=checkbox]:checked~label:after,
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-optgroup .form-check>input[type=checkbox]:checked~label:after {
+        content: "\e911";
+        font-family: Glyphicons-AG, Helvetica, Arial, Helvetica, Verdana, Tahoma, sans-serif !important;
+        color: #616f74;
+        font-size: 11px;
+        position: absolute;
+        cursor: pointer;
+        top: 6px;
+        left: 3.5px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option .form-check>input[type=checkbox]:focus~label:before,
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-optgroup .form-check>input[type=checkbox]:focus~label:before {
+        border-color: #a1a9af
+    }
+
+    .ag-select-host {
+        width: 100%
+    }
+
+    .ag-select-host .form-group label small {
+        margin-left: 5px
+    }
+
+    .ag-select-host .form-group.floating-parent .ng-placeholder {
+        display: none
+    }
+
+    .ag-select-host .form-group.floating-parent label.floating:not(.filled) {
+        top: 6px
+    }
+
+    .ag-select-host .form-group .ag-select {
+        margin-top: 15px;
+        font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
+        font-size: 15px;
+        color: #495057
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-opened>.ng-select-container {
+        background: #fff
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-opened>.ng-select-container:hover {
+        box-shadow: none
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-opened>.ng-select-container .ng-arrow-wrapper:after {
+        content: "\e260"
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-opened.ng-select-top>.ng-select-container {
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+        border-bottom-color: #dadbe0;
+        margin-bottom: -1px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-opened.ng-select-right>.ng-select-container {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-bottom-color: #dadbe0;
+        margin-bottom: -1px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-opened.ng-select-bottom>.ng-select-container {
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-top-color: #dadbe0;
+        margin-top: -1px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-opened.ng-select-left>.ng-select-container {
+        border-top-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-bottom-color: #dadbe0;
+        margin-bottom: -1px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container {
+        border-color: #dadbe0
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-disabled>.ng-select-container {
+        background-color: #f5f5f7;
+        color: #bdc2c7;
+        cursor: not-allowed
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select .ng-has-value .ng-placeholder {
+        display: none
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select .ng-select-container {
+        color: #495057;
+        background-color: #fff;
+        border-radius: 3px;
+        border: 1px solid #dadbe0;
+        min-height: 40px;
+        align-items: center
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select .ng-select-container .ng-value-container {
+        align-items: center;
+        padding-left: 10px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select .ng-select-container .ng-value-container .ng-placeholder {
+        color: #b0b6bc
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select .ng-select-container .ag-select-loading-icon {
+        margin-right: 5px;
+        animation: loading-spin 1s infinite steps(8)
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-single .ng-select-container {
+        height: 40px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+        top: 5px;
+        left: 0;
+        padding-left: 10px;
+        padding-right: 50px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-multiple.ng-select-disabled>.ng-select-container .ng-value-container .ng-value {
+        background-color: #bdc2c7;
+        border: 1px solid #f6f6f7
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-multiple.ng-select-disabled>.ng-select-container .ng-value-container .ng-value .ng-value-label {
+        padding: 0 5px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-multiple .ng-select-container .ng-value-container {
+        padding-top: 5px;
+        padding-left: 7px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+        margin-bottom: 5px;
+        color: #fff;
+        background-color: #616f74;
+        border-radius: 2px;
+        margin-right: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: center
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value.ng-value-disabled {
+        background-color: #bdc2c7
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value.ng-value-disabled .ng-value-label {
+        padding-left: 5px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value .ng-value-label,
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value .ng-value-icon {
+        padding: 1px 5px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value .ng-value-icon:hover {
+        background-color: #556266
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-input {
+        padding: 0 0 3px 3px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-placeholder {
+        padding-bottom: 5px;
+        padding-left: 3px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select .ng-clear-wrapper {
+        color: #a3a5b2
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select .ng-clear-wrapper:hover .ng-clear {
+        color: #d0021b
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select .ng-clear-wrapper .ng-clear {
+        font-size: 15px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select .ng-spinner-zone {
+        padding: 5px 5px 0 0
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select .ng-arrow-wrapper {
+        width: 25px;
+        margin-right: 10px
+    }
+
+    .ag-select-host .form-group .ag-select.ng-select .ng-arrow-wrapper:after {
+        font-family: Glyphicons Halflings, Helvetica, Arial, Verdana, Tahoma, sans-serif;
+        content: "\e259";
+        color: #a1a9af;
+        font-size: 8px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%)
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel {
+        background-color: #fff;
+        border: 1px solid #dadbe0;
+        box-shadow: 0 1px #0000000f;
+        left: 0
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel.ng-select-top {
+        bottom: 100%;
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+        border-bottom-color: #dadbe0;
+        margin-bottom: -1px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel.ng-select-top .ng-dropdown-panel-items .ng-option:first-child {
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel.ng-select-right {
+        left: 100%;
+        top: 0;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-bottom-color: #dadbe0;
+        margin-bottom: -1px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel.ng-select-right .ng-dropdown-panel-items .ng-option:first-child {
+        border-top-right-radius: 3px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel.ng-select-bottom {
+        top: 100%;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-top-color: #dadbe0;
+        margin-top: -1px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel.ng-select-bottom .ng-dropdown-panel-items .ng-option:last-child {
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel.ng-select-left {
+        left: -100%;
+        top: 0;
+        border-top-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-bottom-color: #dadbe0;
+        margin-bottom: -1px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel.ng-select-left .ng-dropdown-panel-items .ng-option:first-child {
+        border-top-left-radius: 3px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-header {
+        border-bottom: 1px solid #dadbe0;
+        padding: 5px 10px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-header input {
+        border: none
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-header i {
+        color: #a1a9af;
+        margin-right: 10px;
+        font-size: 13px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-footer {
+        border-top: 1px solid #dadbe0;
+        padding: 5px 7px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-optgroup {
+        -webkit-user-select: none;
+        user-select: none;
+        padding: 8px 10px;
+        color: #616f74;
+        cursor: pointer
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-optgroup.ng-option-disabled {
+        cursor: default
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-optgroup.ng-option-marked {
+        background-color: #f5f5f7
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+        background-color: #fff;
+        color: #495057;
+        padding: 8px 10px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected,
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked {
+        color: #495057;
+        background-color: #f5f5f7
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected .ng-option-label,
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked .ng-option-label {
+        font-weight: 600
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+        background-color: #f5f5f7;
+        color: #495057
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-disabled {
+        color: #bdc2c7;
+        cursor: not-allowed
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-child {
+        padding-left: 15px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option .ng-tag-label {
+        font-size: 80%;
+        font-weight: 400;
+        padding-right: 5px
+    }
+
+    .ag-select-host .form-group .ag-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option .form-check {
+        margin-left: 10px
+    }
+
+    .ag-select-host.ng-invalid.ng-touched .form-group .ag-select.ng-select .ng-select-container,
+    .ag-select-host.ng-invalid.ng-touched .form-group .ag-select.ng-select .ng-dropdown-panel {
+        border-color: #cc2929
+    }
+</style>
+<style>
+    @charset "UTF-8";
+
+    .ng-select {
+        position: relative;
+        display: block;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box
+    }
+
+    .ng-select div,
+    .ng-select input,
+    .ng-select span {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box
+    }
+
+    .ng-select [hidden] {
+        display: none
+    }
+
+    .ng-select.ng-select-searchable .ng-select-container .ng-value-container .ng-input {
+        opacity: 1
+    }
+
+    .ng-select.ng-select-opened .ng-select-container {
+        z-index: 1001
+    }
+
+    .ng-select.ng-select-disabled .ng-select-container .ng-value-container .ng-placeholder,
+    .ng-select.ng-select-disabled .ng-select-container .ng-value-container .ng-value {
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: default
+    }
+
+    .ng-select.ng-select-disabled .ng-arrow-wrapper {
+        cursor: default
+    }
+
+    .ng-select.ng-select-filtered .ng-placeholder {
+        display: none
+    }
+
+    .ng-select .ng-select-container {
+        cursor: default;
+        display: flex;
+        outline: none;
+        overflow: hidden;
+        position: relative;
+        width: 100%
+    }
+
+    .ng-select .ng-select-container .ng-value-container {
+        display: flex;
+        flex: 1
+    }
+
+    .ng-select .ng-select-container .ng-value-container .ng-input {
+        opacity: 0
+    }
+
+    .ng-select .ng-select-container .ng-value-container .ng-input>input {
+        box-sizing: content-box;
+        background: none transparent;
+        border: 0 none;
+        box-shadow: none;
+        outline: none;
+        padding: 0;
+        cursor: default;
+        width: 100%
+    }
+
+    .ng-select .ng-select-container .ng-value-container .ng-input>input::-ms-clear {
+        display: none
+    }
+
+    .ng-select .ng-select-container .ng-value-container .ng-input>input[readonly] {
+        -webkit-user-select: unset;
+        user-select: unset;
+        width: 0;
+        padding: 0
+    }
+
+    .ng-select.ng-select-single.ng-select-filtered .ng-select-container .ng-value-container .ng-value {
+        visibility: hidden
+    }
+
+    .ng-select.ng-select-single .ng-select-container .ng-value-container,
+    .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+
+    .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value .ng-value-icon {
+        display: none
+    }
+
+    .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+        position: absolute;
+        left: 0;
+        width: 100%
+    }
+
+    .ng-select.ng-select-multiple.ng-select-disabled>.ng-select-container .ng-value-container .ng-value .ng-value-icon {
+        display: none
+    }
+
+    .ng-select.ng-select-multiple .ng-select-container .ng-value-container {
+        flex-wrap: wrap
+    }
+
+    .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-placeholder {
+        position: absolute
+    }
+
+    .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+        white-space: nowrap
+    }
+
+    .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value.ng-value-disabled .ng-value-icon {
+        display: none
+    }
+
+    .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value .ng-value-icon {
+        cursor: pointer
+    }
+
+    .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-input {
+        flex: 1;
+        z-index: 2
+    }
+
+    .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-placeholder {
+        z-index: 1
+    }
+
+    .ng-select .ng-clear-wrapper {
+        cursor: pointer;
+        position: relative;
+        width: 17px;
+        -webkit-user-select: none;
+        user-select: none
+    }
+
+    .ng-select .ng-clear-wrapper .ng-clear {
+        display: inline-block;
+        font-size: 18px;
+        line-height: 1;
+        pointer-events: none
+    }
+
+    .ng-select .ng-spinner-loader {
+        border-radius: 50%;
+        width: 17px;
+        height: 17px;
+        margin-right: 5px;
+        font-size: 10px;
+        position: relative;
+        text-indent: -9999em;
+        border-top: 2px solid rgba(66, 66, 66, .2);
+        border-right: 2px solid rgba(66, 66, 66, .2);
+        border-bottom: 2px solid rgba(66, 66, 66, .2);
+        border-left: 2px solid #424242;
+        transform: translateZ(0);
+        animation: load8 .8s infinite linear
+    }
+
+    .ng-select .ng-spinner-loader:after {
+        border-radius: 50%;
+        width: 17px;
+        height: 17px
+    }
+
+    @-webkit-keyframes load8 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0)
+        }
+
+        to {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg)
+        }
+    }
+
+    @keyframes load8 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0)
+        }
+
+        to {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg)
+        }
+    }
+
+    .ng-select .ng-arrow-wrapper {
+        cursor: pointer;
+        position: relative;
+        text-align: center;
+        -webkit-user-select: none;
+        user-select: none
+    }
+
+    .ng-select .ng-arrow-wrapper .ng-arrow {
+        pointer-events: none;
+        display: inline-block;
+        height: 0;
+        width: 0;
+        position: relative
+    }
+
+    .ng-dropdown-panel {
+        box-sizing: border-box;
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        z-index: 1050;
+        -webkit-overflow-scrolling: touch
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items {
+        display: block;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        max-height: 240px;
+        overflow-y: auto
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-optgroup {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+        box-sizing: border-box;
+        cursor: pointer;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option .ng-option-label:empty:before {
+        content: "\200b"
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option .highlighted {
+        font-weight: 700;
+        text-decoration: underline
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.disabled {
+        cursor: default
+    }
+
+    .ng-dropdown-panel .scroll-host {
+        overflow: hidden;
+        overflow-y: auto;
+        position: relative;
+        display: block;
+        -webkit-overflow-scrolling: touch
+    }
+
+    .ng-dropdown-panel .scrollable-content {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute
+    }
+
+    .ng-dropdown-panel .total-padding {
+        width: 1px;
+        opacity: 0
+    }
+</style>
+</head>
+
+<body class="dx-device-desktop dx-device-generic ng-tns-0-0">
+    <ag-root _nghost-ng-c750109662="" ng-version="18.2.13"><div _ngcontent-ng-c750109662="" class="app-layout"><ag-side-bar _ngcontent-ng-c750109662="" _nghost-ng-c1192258704=""><div _ngcontent-ng-c1192258704="" class="sidebar"><div _ngcontent-ng-c1192258704="" class="top-container"><!----><div _ngcontent-ng-c1192258704="" class="user-picture"><img _ngcontent-ng-c1192258704="" alt="User Picture" src="assets/images/person.svg" style="border: solid rgb(40, 205, 65);"><!----><label _ngcontent-ng-c1192258704="" id="label-presence" class="presence" style="color: rgb(40, 205, 65);">On Queue</label><label _ngcontent-ng-c1192258704="" class="pill">00:02:36</label></div><div _ngcontent-ng-c1192258704="" class="item"><ag-side-bar-item _ngcontent-ng-c1192258704="" route="/calling" icon="history" text="Recents" _nghost-ng-c2118999916=""><a _ngcontent-ng-c2118999916="" routerlinkactive="active-link" class="item" href="/virmcommunicationpanel/calling"><mat-icon _ngcontent-ng-c2118999916="" role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">history</mat-icon><span _ngcontent-ng-c2118999916="">Recents</span></a></ag-side-bar-item></div><div _ngcontent-ng-c1192258704="" class="item"><ag-side-bar-item _ngcontent-ng-c1192258704="" route="/contacts" icon="group" text="Phonebook" _nghost-ng-c2118999916=""><a _ngcontent-ng-c2118999916="" routerlinkactive="active-link" class="item" href="/virmcommunicationpanel/contacts"><mat-icon _ngcontent-ng-c2118999916="" role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">group</mat-icon><span _ngcontent-ng-c2118999916="">Phonebook</span></a></ag-side-bar-item></div><div _ngcontent-ng-c1192258704="" class="item"><ag-side-bar-item _ngcontent-ng-c1192258704="" route="/home" icon="call" _nghost-ng-c2118999916=""><a _ngcontent-ng-c2118999916="" routerlinkactive="active-link" class="item active-link notInACall" href="/virmcommunicationpanel/home"><mat-icon _ngcontent-ng-c2118999916="" role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color notInACall" aria-hidden="true" data-mat-icon-type="font">call</mat-icon><span _ngcontent-ng-c2118999916="" class="notInACall">Call</span></a></ag-side-bar-item></div><div _ngcontent-ng-c1192258704="" class="item"><ag-side-bar-item _ngcontent-ng-c1192258704="" iconsymbolclass="material-symbols-outlined" route="/monitoring" icon="swap_driving_apps_wheel" text="Monitoring" _nghost-ng-c2118999916=""><a _ngcontent-ng-c2118999916="" routerlinkactive="active-link" class="item" href="/virmcommunicationpanel/monitoring"><mat-icon _ngcontent-ng-c2118999916="" role="img" class="mat-icon notranslate material-icons mat-ligature-font material-symbols-outlined mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">swap_driving_apps_wheel</mat-icon><span _ngcontent-ng-c2118999916="">Monitoring</span></a></ag-side-bar-item></div><!----></div><div _ngcontent-ng-c1192258704="" class="item"><ag-side-bar-item _ngcontent-ng-c1192258704="" route="/settings" icon="settings" text="Settings" _nghost-ng-c2118999916=""><a _ngcontent-ng-c2118999916="" routerlinkactive="active-link" class="item" href="/virmcommunicationpanel/settings"><mat-icon _ngcontent-ng-c2118999916="" role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">settings</mat-icon><span _ngcontent-ng-c2118999916="">Settings</span></a></ag-side-bar-item></div></div></ag-side-bar><ag-top-bar _ngcontent-ng-c750109662="" class="mini-view" _nghost-ng-c1888292337=""><div _ngcontent-ng-c1888292337="" class="topbar"><div _ngcontent-ng-c1888292337="" class="select"><div _ngcontent-ng-c1888292337="" class="select-item"><h3 _ngcontent-ng-c1888292337="" class="label">Your status:</h3><div _ngcontent-ng-c1888292337="" agclickoutside="" class="button"><!----><h3 _ngcontent-ng-c1888292337="" class="name-or-number"> On Queue</h3><!----><!----><mat-icon _ngcontent-ng-c1888292337="" role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">expand_more</mat-icon></div><!----></div><div _ngcontent-ng-c1888292337="" class="select-item"><h3 _ngcontent-ng-c1888292337="" class="label">Your queues:</h3><div _ngcontent-ng-c1888292337="" class="button"><h3 _ngcontent-ng-c1888292337="" class="name-or-number">HIS_T_ServiceDesk</h3><mat-icon _ngcontent-ng-c1888292337="" role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font">expand_more</mat-icon></div><!----></div></div><div _ngcontent-ng-c1888292337="" class="switch-container"><h3 _ngcontent-ng-c1888292337="" class="switch-label">On queue</h3><div _ngcontent-ng-c1888292337="" agtooltiptrigger="You need to be active in at least one queue" class="switch"><ag-onqueue-switch-button _ngcontent-ng-c1888292337="" _nghost-ng-c1256768602=""><div _ngcontent-ng-c1256768602="" class="toggle"><input _ngcontent-ng-c1256768602="" type="checkbox" id="toggle" class="toggle-input"><label _ngcontent-ng-c1256768602="" for="toggle" class="toggle-slider"></label></div></ag-onqueue-switch-button></div><!----></div></div></ag-top-bar><ag-alert _ngcontent-ng-c750109662="" class="mini-view" _nghost-ng-c2474726030=""><!----></ag-alert><app-not-responding-pop-up-component _ngcontent-ng-c750109662="" class="mini-view" _nghost-ng-c1005481317=""><!----></app-not-responding-pop-up-component><!----><div _ngcontent-ng-c750109662="" class="main mini-view"><div _ngcontent-ng-c750109662="" class="isAuthorized"><router-outlet _ngcontent-ng-c750109662=""></router-outlet><app-home _nghost-ng-c874398887=""><div _ngcontent-ng-c874398887="" class="main-container"><div _ngcontent-ng-c874398887="" class="initial-dialpad-container"><dialpad _ngcontent-ng-c874398887="" class="dialpad" _nghost-ng-c4237918716=""><div _ngcontent-ng-c4237918716="" class="behalf"><ag-on-behalf-option _ngcontent-ng-c4237918716="" _nghost-ng-c1003443283=""><section _ngcontent-ng-c1003443283="" id="behalf-container"><div _ngcontent-ng-c1003443283="" class="behalf"><!----><!----><div _ngcontent-ng-c1003443283="" class="behalf-queue-selection"><ag-select _ngcontent-ng-c1003443283="" bindlabel="name" bindvalue="id" labelforid="behalfedQueueSelect" placeholder="On behalf of queue" class="on-behalf-dropdown ag-select-host ng-untouched ng-valid ng-dirty"><div class="form-group"><!----><ng-select class="ag-select ng-select-clearable ng-select ng-select-single ng-untouched ng-pristine ng-valid"><div class="ng-select-container ng-has-value"><div class="ng-value-container"><!----><div class="ng-placeholder">On behalf of queue</div><!----><!----><div class="ng-value"><!----><span aria-hidden="true" class="ng-value-icon left">×</span><span class="ng-value-label">HIS_T_ServiceDesk</span><!----></div><!----><!----><!----><div class="ng-input"><input aria-autocomplete="list" role="combobox" type="text" autocorrect="off" autocapitalize="off" autocomplete="off" readonly="" aria-expanded="false" id="behalfedQueueSelect"></div></div><!----><span role="button" tabindex="0" class="ng-clear-wrapper" title="Clear"><span aria-hidden="true" class="ng-clear">×</span></span><!----><span class="ng-arrow-wrapper"><span class="ng-arrow"></span></span></div><!----></ng-select><input type="hidden" id="behalfedQueueSelect-hidden-value" value="5e40f423-1274-4994-bcbd-6d3916dbf6d6"></div></ag-select><!----></div><!----></div><div _ngcontent-ng-c1003443283=""><!----><!----><!----></div></section></ag-on-behalf-option></div><!----><div _ngcontent-ng-c4237918716="" class="screen-container"><input _ngcontent-ng-c4237918716="" type="search" placeholder="Type a number" class="dialpad-screen ng-untouched ng-pristine ng-valid"></div><div _ngcontent-ng-c4237918716="" class="button-container"><div _ngcontent-ng-c4237918716="" class="dialpad-row"><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button"><span _ngcontent-ng-c2631205996="" class="icon"><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><h5 _ngcontent-ng-c2631205996="" class="number">1</h5><!----><!----></div></button></app-dialpad-button><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button"><span _ngcontent-ng-c2631205996="" class="icon"><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><h5 _ngcontent-ng-c2631205996="" class="number">2</h5><!----><!----></div></button></app-dialpad-button><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button"><span _ngcontent-ng-c2631205996="" class="icon"><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><h5 _ngcontent-ng-c2631205996="" class="number">3</h5><!----><!----></div></button></app-dialpad-button></div><div _ngcontent-ng-c4237918716="" class="dialpad-row"><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button"><span _ngcontent-ng-c2631205996="" class="icon"><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><h5 _ngcontent-ng-c2631205996="" class="number">4</h5><!----><!----></div></button></app-dialpad-button><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button"><span _ngcontent-ng-c2631205996="" class="icon"><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><h5 _ngcontent-ng-c2631205996="" class="number">5</h5><!----><!----></div></button></app-dialpad-button><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button"><span _ngcontent-ng-c2631205996="" class="icon"><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><h5 _ngcontent-ng-c2631205996="" class="number">6</h5><!----><!----></div></button></app-dialpad-button></div><div _ngcontent-ng-c4237918716="" class="dialpad-row"><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button"><span _ngcontent-ng-c2631205996="" class="icon"><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><h5 _ngcontent-ng-c2631205996="" class="number">7</h5><!----><!----></div></button></app-dialpad-button><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button"><span _ngcontent-ng-c2631205996="" class="icon"><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><h5 _ngcontent-ng-c2631205996="" class="number">8</h5><!----><!----></div></button></app-dialpad-button><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button"><span _ngcontent-ng-c2631205996="" class="icon"><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><h5 _ngcontent-ng-c2631205996="" class="number">9</h5><!----><!----></div></button></app-dialpad-button></div><div _ngcontent-ng-c4237918716="" class="dialpad-row"><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button"><span _ngcontent-ng-c2631205996="" class="icon"><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><h5 _ngcontent-ng-c2631205996="" class="number">*</h5><!----><!----></div></button></app-dialpad-button><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button"><span _ngcontent-ng-c2631205996="" class="icon"><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><h5 _ngcontent-ng-c2631205996="" class="number">0</h5><!----><h5 _ngcontent-ng-c2631205996="" class="symbol">+</h5><!----></div></button></app-dialpad-button><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button"><span _ngcontent-ng-c2631205996="" class="icon"><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><h5 _ngcontent-ng-c2631205996="" class="number">#</h5><!----><!----></div></button></app-dialpad-button></div><div _ngcontent-ng-c4237918716="" class="dialpad-row"><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button call-button"><span _ngcontent-ng-c2631205996="" class="icon"><mat-icon _ngcontent-ng-c2631205996="" role="img" class="mat-icon notranslate call-icon material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font"> call </mat-icon><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><!----><!----></div></button></app-dialpad-button><!----><!----><app-dialpad-button _ngcontent-ng-c4237918716="" _nghost-ng-c2631205996=""><button _ngcontent-ng-c2631205996="" type="button" class="circle-button backspace-button"><span _ngcontent-ng-c2631205996="" class="icon"><mat-icon _ngcontent-ng-c2631205996="" role="img" class="mat-icon notranslate backspace-icon material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font"> backspace </mat-icon><!----></span><div _ngcontent-ng-c2631205996="" class="number-container"><!----><!----></div></button></app-dialpad-button></div></div></dialpad></div><!----><!----><!----><!----><!----><ag-network-issue-popup _ngcontent-ng-c874398887="" _nghost-ng-c1260560212=""><ag-modal _ngcontent-ng-c1260560212="" title="" class="ag-modal"><!----></ag-modal></ag-network-issue-popup></div><ag-modal _ngcontent-ng-c874398887="" id="modal-popup" class="ag-modal"><!----></ag-modal></app-home><!----></div><!----><!----></div><!----></div></ag-root>
+    
+    <script src="/virmcommunicationpanel/purecloud.js"></script>
+	<script type="module" src="/virmcommunicationpanel/runtime.c6c680b1dfa40c7e.js"></script>
+    <script type="module" src="/virmcommunicationpanel/polyfills.a5ae99481021e824.js"></script>
+    <script type="module" src="/virmcommunicationpanel/main.1b487ce2e429a317.js"></script>
+    
+    <script defer="" src="/virmcommunicationpanel/scripts.2743f701bee6fc26.js"></script>
+    
+
+<div style="top: 50px; right: 20px;" class="dx-toast-stack dx-toast-stack-down-stack-direction"></div><audio class="__gc-webrtc-inbound-b0e414e1-5d39-467f-9fa8-41981bc845a5" autoplay="" style="visibility: hidden;"></audio>
+</body>
+
+
+</html>
